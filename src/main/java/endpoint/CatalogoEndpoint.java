@@ -1,4 +1,4 @@
-package cl.mapuescuela.endpoint;
+package endpoint;
 
 import cl.mapuescuela.model.Producto;
 import cl.mapuescuela.service.CatalogoService;
