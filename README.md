@@ -61,3 +61,70 @@ El backend gestiona productos y está preparado para extenderse con pedidos y co
    ```bash
    git clone https://github.com/gabrielalejandroF49/web-service.mapuescuela.git
 
+   ---
+
+# 🖥️ Frontend - Mapuescuela
+
+Como parte de la solución propuesta para Mapuescuela, se desarrolló un frontend web que permite representar y probar las principales interacciones que tendrá el usuario con la plataforma.
+
+Actualmente el frontend funciona de manera local y se encuentra preparado para su posterior integración con el backend y los servicios SOAP del proyecto.
+
+## 📂 Estructura del frontend
+
+- `index.html` → Página principal y catálogo de productos.
+- `carrito.html` → Carrito de compras y resumen de productos seleccionados.
+- `checkout.html` → Registro de datos del cliente y generación del pedido.
+- `estado.html` → Consulta del estado de un pedido mediante su código.
+- `admin.html` → Panel básico para gestión de productos y pedidos.
+- `estilos.css` → Diseño visual y adaptación de las distintas vistas.
+- `app.js` → Lógica principal y funcionamiento del frontend.
+- `soap-client.js` → Archivo preparado para la futura comunicación con el servicio SOAP.
+
+## 🔧 Funcionalidades implementadas
+
+- Visualización del catálogo de productos.
+- Búsqueda y filtrado por categoría.
+- Visualización del detalle de productos.
+- Carrito de compras.
+- Control de cantidades según stock disponible.
+- Cálculo del total de la compra.
+- Registro de datos del cliente.
+- Selección entre retiro y despacho.
+- Generación de pedidos.
+- Generación de código de seguimiento.
+- Consulta del estado del pedido.
+- Panel básico de administración.
+- Gestión de productos y estados de pedidos.
+
+## 💻 Tecnologías utilizadas
+
+- HTML5
+- CSS3
+- JavaScript
+- LocalStorage para almacenamiento temporal durante las pruebas locales.
+
+## 🔄 Estado actual
+
+El frontend se encuentra funcional en ambiente local.
+
+Durante esta primera etapa se utiliza `LocalStorage` para realizar pruebas del catálogo, carrito, pedidos y administración sin depender del funcionamiento del backend.
+
+La integración con el Web Service SOAP se realizará progresivamente utilizando las operaciones disponibles en el backend.
+
+## 🔗 Integración prevista con SOAP
+
+Las operaciones actuales del backend que podrán ser utilizadas por el frontend son:
+
+- `listarProductos()` → Obtener los productos disponibles.
+- `obtenerProducto(Long id)` → Consultar el detalle de un producto.
+- `actualizarStock(Long id, int cantidad)` → Actualizar el stock después de una operación de venta.
+
+Las demás funcionalidades serán integradas a medida que se incorporen nuevas operaciones al backend.
+
+## 🚀 Ejecución local del frontend
+
+Desde la carpeta donde se encuentra el frontend ejecutar:
+
+```bash
+python -m http.server 8000
+
