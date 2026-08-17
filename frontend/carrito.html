@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapuescuela | Carrito</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body data-page="carrito">
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">M</span>
+      <span><strong>Mapuescuela</strong><small>Catálogo solidario</small></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Catálogo</a>
+      <a href="estado.html">Mi pedido</a>
+      <a href="admin.html">Administración</a>
+      <a class="cart-link active" href="carrito.html">Carrito <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <!-- Vista del carrito: app.js inserta los productos seleccionados y calcula el total. -->
+  <main class="section page-narrow">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Tu selección</span>
+        <h1>Carrito de compras</h1>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <section>
+        <div id="cart-items" class="stack"></div>
+        <div id="empty-cart" class="empty hidden">
+          <h3>Tu carrito está vacío</h3>
+          <p>Agrega uno o más productos para generar una compra.</p>
+          <a class="btn primary" href="index.html">Volver al catálogo</a>
+        </div>
+      </section>
+
+      <!-- Resumen de compra antes de pasar al checkout. -->
+      <aside id="cart-summary" class="summary-card">
+        <h3>Resumen</h3>
+        <div class="summary-line"><span>Productos</span><strong id="summary-items">0</strong></div>
+        <div class="summary-line total"><span>Total</span><strong id="summary-total">$0</strong></div>
+        <a id="checkout-btn" class="btn primary block" href="checkout.html">Continuar compra</a>
+        <button id="clear-cart" class="btn ghost block">Vaciar carrito</button>
+      </aside>
+    </div>
+  </main>
+
+  <footer><p>Proyecto académico — Integración de Plataformas · MVP Mapuescuela</p></footer>
+  <script src="soap-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

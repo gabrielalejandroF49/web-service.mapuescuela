@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapuescuela | Catálogo solidario</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body data-page="catalogo">
+  <!-- Navegación principal del catálogo y acceso a las demás vistas. -->
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">M</span>
+      <span>
+        <strong>Mapuescuela</strong>
+        <small>Catálogo solidario</small>
+      </span>
+    </a>
+    <nav class="nav">
+      <a class="active" href="index.html">Catálogo</a>
+      <a href="estado.html">Mi pedido</a>
+      <a href="admin.html">Administración</a>
+      <a class="cart-link" href="carrito.html">Carrito <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Presentación breve del objetivo solidario de Mapuescuela. -->
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Compra con propósito</span>
+        <h1>Productos donados que ayudan a continuar estudios.</h1>
+        <p>Explora artículos usados disponibles y apoya el trabajo de Mapuescuela.</p>
+        <a class="btn primary" href="#catalogo">Ver productos</a>
+      </div>
+      <div class="hero-card">
+        <strong>¿Cómo funciona?</strong>
+        <ol>
+          <li>Elige tus productos.</li>
+          <li>Genera el pedido.</li>
+          <li>Transfiere y adjunta tu comprobante.</li>
+          <li>Mapuescuela valida el pago y prepara la entrega.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Catálogo público: los productos se generan dinámicamente desde app.js. -->
+    <section class="section" id="catalogo">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Catálogo público</span>
+          <h2>Productos disponibles</h2>
+        </div>
+        <div class="filters">
+          <input id="search-input" type="search" placeholder="Buscar producto..." />
+          <select id="category-filter">
+            <option value="">Todas las categorías</option>
+          </select>
+        </div>
+      </div>
+      <div id="product-grid" class="product-grid"></div>
+      <div id="empty-products" class="empty hidden">No se encontraron productos.</div>
+    </section>
+  </main>
+
+  <!-- Modal reutilizado para mostrar el detalle del producto sin cambiar de página. -->
+  <div id="product-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modal-close" class="modal-close" aria-label="Cerrar">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Proyecto académico — Integración de Plataformas · MVP Mapuescuela</p>
+  </footer>
+
+  <script src="soap-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

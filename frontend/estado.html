@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapuescuela | Estado del pedido</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body data-page="estado">
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">M</span>
+      <span><strong>Mapuescuela</strong><small>Catálogo solidario</small></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Catálogo</a>
+      <a class="active" href="estado.html">Mi pedido</a>
+      <a href="admin.html">Administración</a>
+      <a class="cart-link" href="carrito.html">Carrito <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main class="section page-narrow">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Seguimiento</span>
+        <h1>Consulta el estado de tu pedido</h1>
+      </div>
+    </div>
+
+    <section class="form-card">
+      <!-- La consulta por código permite al cliente revisar el estado de su pedido. -->
+      <form id="track-form" class="track-form">
+        <label>Código de pedido
+          <input id="track-code" required placeholder="Ej: MAP-123456" />
+        </label>
+        <button class="btn primary" type="submit">Consultar</button>
+      </form>
+      <p class="help">Puedes usar el código generado al finalizar una compra.</p>
+    </section>
+
+    <section id="track-result" class="order-detail hidden"></section>
+  </main>
+
+  <footer><p>Proyecto académico — Integración de Plataformas · MVP Mapuescuela</p></footer>
+  <script src="soap-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapuescuela | Finalizar compra</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body data-page="checkout">
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">M</span>
+      <span><strong>Mapuescuela</strong><small>Catálogo solidario</small></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Catálogo</a>
+      <a href="estado.html">Mi pedido</a>
+      <a href="admin.html">Administración</a>
+      <a class="cart-link" href="carrito.html">Carrito <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main class="section page-narrow">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Generación del pedido</span>
+        <h1>Finalizar compra</h1>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <!-- Formulario principal para reunir los datos necesarios para generar el pedido. -->
+      <form id="checkout-form" class="form-card">
+        <h3>1. Datos de contacto</h3>
+        <div class="form-grid">
+          <label>Nombre completo
+            <input required name="nombre" type="text" placeholder="Ej: Ana Pérez" />
+          </label>
+          <label>Correo electrónico
+            <input required name="email" type="email" placeholder="ana@email.cl" />
+          </label>
+          <label>Teléfono
+            <input required name="telefono" type="tel" placeholder="+56 9 ..." />
+          </label>
+          <label>Comuna
+            <input required name="comuna" type="text" placeholder="Ej: Padre Hurtado" />
+          </label>
+        </div>
+
+        <h3>2. Modalidad de entrega</h3>
+        <!-- El cliente puede elegir entre retiro o despacho según el caso de estudio. -->
+        <div class="option-grid">
+          <label class="option-card">
+            <input required type="radio" name="entrega" value="RETIRO" checked />
+            <span><strong>Retiro</strong><small>Retiro coordinado en Padre Hurtado.</small></span>
+          </label>
+          <label class="option-card">
+            <input required type="radio" name="entrega" value="DESPACHO" />
+            <span><strong>Despacho</strong><small>Voluntario o courier nacional.</small></span>
+          </label>
+        </div>
+
+        <div id="shipping-fields" class="form-grid hidden">
+          <label class="full">Dirección de despacho
+            <input name="direccion" type="text" placeholder="Calle, número, comuna" />
+          </label>
+        </div>
+
+        <h3>3. Pago por transferencia</h3>
+        <div class="bank-box">
+          <p><strong>Datos bancarios de demostración</strong></p>
+          <p>Banco: Banco Demo · Cuenta: 12345678 · Titular: Mapuescuela</p>
+          <small>En la integración real estos datos pueden provenir del backend.</small>
+        </div>
+
+        <!-- El comprobante se incluye porque el caso utiliza pago por transferencia. -->
+        <label>Adjuntar comprobante de transferencia
+          <input name="comprobante" type="file" accept=".pdf,.png,.jpg,.jpeg" />
+          <small class="help">Para la demo puedes continuar sin archivo. En el flujo real el pedido queda pendiente de pago hasta recibirlo.</small>
+        </label>
+
+        <button class="btn primary block" type="submit">Generar pedido</button>
+        <p id="checkout-message" class="form-message hidden"></p>
+      </form>
+
+      <aside class="summary-card">
+        <h3>Resumen del pedido</h3>
+        <div id="checkout-items" class="mini-list"></div>
+        <div class="summary-line total"><span>Total</span><strong id="checkout-total">$0</strong></div>
+        <p class="notice">El caso establece un plazo máximo de 24 horas para adjuntar el comprobante.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer><p>Proyecto académico — Integración de Plataformas · MVP Mapuescuela</p></footer>
+  <script src="soap-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapuescuela | Administración</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body data-page="admin">
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">M</span>
+      <span><strong>Mapuescuela</strong><small>Panel de voluntariado</small></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Catálogo</a>
+      <a href="estado.html">Mi pedido</a>
+      <a class="active" href="admin.html">Administración</a>
+      <a class="cart-link" href="carrito.html">Carrito <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <!-- Panel pensado para el voluntario/administrador de Mapuescuela. -->
+  <main class="section">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Voluntario / administrador</span>
+        <h1>Gestión de ventas</h1>
+      </div>
+      <button id="reset-demo" class="btn ghost">Restablecer demo</button>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat"><span>Productos</span><strong id="stat-products">0</strong></div>
+      <div class="stat"><span>Pedidos</span><strong id="stat-orders">0</strong></div>
+      <div class="stat"><span>Pagos en revisión</span><strong id="stat-review">0</strong></div>
+      <div class="stat"><span>Ventas aprobadas</span><strong id="stat-approved">0</strong></div>
+    </div>
+
+    <div class="admin-tabs">
+      <button class="tab active" data-tab="pedidos">Pedidos</button>
+      <button class="tab" data-tab="productos">Productos</button>
+    </div>
+
+    <!-- Gestión de pedidos y avance de estados del proceso de venta. -->
+    <section id="tab-pedidos" class="admin-panel">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Código</th><th>Cliente</th><th>Total</th><th>Entrega</th><th>Estado</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="orders-table"></tbody>
+        </table>
+      </div>
+      <div id="no-orders" class="empty hidden">Aún no existen pedidos.</div>
+    </section>
+
+    <!-- Gestión básica de productos y stock desde la interfaz administrativa. -->
+    <section id="tab-productos" class="admin-panel hidden">
+      <div class="panel-actions">
+        <button id="new-product" class="btn primary">Agregar producto</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Estado</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="products-table"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="product-form-modal" class="modal hidden">
+    <div class="modal-card small">
+      <button id="product-form-close" class="modal-close">×</button>
+      <h2 id="product-form-title">Producto</h2>
+      <form id="product-form" class="form-grid">
+        <input type="hidden" name="id" />
+        <label>Nombre<input required name="nombre" /></label>
+        <label>Categoría<input required name="categoria" /></label>
+        <label>Precio<input required min="0" name="precio" type="number" /></label>
+        <label>Stock<input required min="0" name="stock" type="number" /></label>
+        <label class="full">Descripción<textarea required name="descripcion" rows="3"></textarea></label>
+        <label>Estado
+          <select name="estado">
+            <option value="DISPONIBLE">Disponible</option>
+            <option value="NO_DISPONIBLE">No disponible</option>
+          </select>
+        </label>
+        <button class="btn primary full" type="submit">Guardar producto</button>
+      </form>
+    </div>
+  </div>
+
+  <footer><p>Proyecto académico — Integración de Plataformas · MVP Mapuescuela</p></footer>
+  <script src="soap-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
