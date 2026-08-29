@@ -1,4 +1,4 @@
-package endpoint;
+package cl.mapuescuela.endpoint;
 
 import cl.mapuescuela.model.Pedido;
 import cl.mapuescuela.model.EstadoPedido;
@@ -9,6 +9,7 @@ import cl.mapuescuela.service.PedidoService;
 
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,12 @@ public class PedidoEndpoint {
     @WebMethod
     public Pedido crearPedido(Cliente cliente, List<Producto> productos,
                               ModalidadEntrega modalidad, String direccionEntrega) {
+        // Validación de modalidad de entrega
+        if (modalidad == ModalidadEntrega.DESPACHO &&
+                (direccionEntrega == null || direccionEntrega.isBlank())) {
+            throw new RuntimeException("La dirección de entrega es obligatoria para modalidad DESPACHO");
+        }
+
         Pedido pedido = new Pedido(pedidoCounter++, cliente, productos, modalidad, direccionEntrega);
         pedidos.add(pedido);
         return pedido;
@@ -33,19 +40,21 @@ public class PedidoEndpoint {
                 return p;
             }
         }
-        return null;
+        throw new RuntimeException("Pedido no encontrado");
     }
 
     @WebMethod
-    public String cambiarEstado(int id, EstadoPedido nuevoEstado) {
+    public Pedido cambiarEstado(int id, EstadoPedido nuevoEstado) {
         for (Pedido p : pedidos) {
             if (p.getId() == id) {
                 PedidoService service = new PedidoService();
                 boolean ok = service.cambiarEstado(p, nuevoEstado);
-                return ok ? "Estado actualizado a: " + nuevoEstado
-                        : "Transición inválida desde " + p.getEstado() + " a " + nuevoEstado;
+                if (!ok) {
+                    throw new RuntimeException("Transición inválida desde " + p.getEstado() + " a " + nuevoEstado);
+                }
+                return p; // devolvemos el pedido actualizado
             }
         }
-        return "Pedido no encontrado";
+        throw new RuntimeException("Pedido no encontrado");
     }
 }

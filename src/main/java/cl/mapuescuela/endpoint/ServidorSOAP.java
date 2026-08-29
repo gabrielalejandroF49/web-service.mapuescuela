@@ -1,9 +1,9 @@
-package cl.mapuescuela;
+package cl.mapuescuela.endpoint;
 
 import cl.mapuescuela.endpoint.CatalogoEndpoint;
 import jakarta.xml.ws.Endpoint;
 
-public class ServdorSOAP{
+public class ServidorSOAP {
     public static void main(String[] args) {
         String url = "http://localhost:9090/ws/catalogo";
         Endpoint.publish(url, new CatalogoEndpoint());
