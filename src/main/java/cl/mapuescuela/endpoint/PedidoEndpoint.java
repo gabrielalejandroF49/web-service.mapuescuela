@@ -10,51 +10,47 @@ import cl.mapuescuela.service.PedidoService;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @WebService
 public class PedidoEndpoint {
 
-    private List<Pedido> pedidos = new ArrayList<>();
-    private int pedidoCounter = 1;
+    // Servicio de pedidos (por ahora en memoria, después se conecta a BD)
+    private final PedidoService service = new PedidoService();
 
+    // Crear un nuevo pedido
     @WebMethod
     public Pedido crearPedido(Cliente cliente, List<Producto> productos,
                               ModalidadEntrega modalidad, String direccionEntrega) {
-        // Validación de modalidad de entrega
         if (modalidad == ModalidadEntrega.DESPACHO &&
                 (direccionEntrega == null || direccionEntrega.isBlank())) {
             throw new RuntimeException("La dirección de entrega es obligatoria para modalidad DESPACHO");
         }
+        return service.crearPedidoDesdeVariables(cliente, productos,
+                modalidad.name(), direccionEntrega);
+    }
 
-        Pedido pedido = new Pedido(pedidoCounter++, cliente, productos, modalidad, direccionEntrega);
-        pedidos.add(pedido);
+    // Consultar un pedido por ID
+    @WebMethod
+    public Pedido consultarPedido(int id) {
+        Pedido pedido = service.buscarPedidoEnMemoriaPorId(id);
+        if (pedido == null) {
+            throw new RuntimeException("Pedido no encontrado");
+        }
         return pedido;
     }
 
-    @WebMethod
-    public Pedido consultarPedido(int id) {
-        for (Pedido p : pedidos) {
-            if (p.getId() == id) {
-                return p;
-            }
-        }
-        throw new RuntimeException("Pedido no encontrado");
-    }
-
+    // Cambiar el estado de un pedido
     @WebMethod
     public Pedido cambiarEstado(int id, EstadoPedido nuevoEstado) {
-        for (Pedido p : pedidos) {
-            if (p.getId() == id) {
-                PedidoService service = new PedidoService();
-                boolean ok = service.cambiarEstado(p, nuevoEstado);
-                if (!ok) {
-                    throw new RuntimeException("Transición inválida desde " + p.getEstado() + " a " + nuevoEstado);
-                }
-                return p; // devolvemos el pedido actualizado
-            }
+        Pedido pedido = service.buscarPedidoEnMemoriaPorId(id);
+        if (pedido == null) {
+            throw new RuntimeException("Pedido no encontrado");
         }
-        throw new RuntimeException("Pedido no encontrado");
+        boolean ok = service.cambiarEstado(pedido, nuevoEstado);
+        if (!ok) {
+            throw new RuntimeException("Transición inválida desde " + pedido.getEstado() + " a " + nuevoEstado);
+        }
+        return pedido;
     }
 }
