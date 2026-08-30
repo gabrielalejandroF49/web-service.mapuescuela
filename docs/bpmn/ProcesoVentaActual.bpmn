@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:design="http://flowable.org/design" targetNamespace="http://flowable.org/test" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.25.1" design:palette="flowable-work-process-palette">
+  <collaboration id="Collaboration">
+    <participant id="Pool_1" name="Proceso de venta actual" processRef="process-Pool_1" />
+    <participant id="Participant_0w4iysz" name="Cliente" processRef="Process_04d43dx" />
+    <messageFlow id="Flow_04lpkz9" sourceRef="FormTask_6" targetRef="FormTask_7" />
+    <messageFlow id="Flow_1se45li" sourceRef="FormTask_12" targetRef="FormTask_13" />
+    <messageFlow id="Flow_0kvlgx6" sourceRef="FormTask_14" targetRef="FormTask_15" />
+  </collaboration>
+  <process id="process-Pool_1" name="Proceso de venta actual" isExecutable="false" flowable:candidateStarterGroups="flowableUser">
+    <extensionElements>
+      <design:stencilid>BPMNDiagram</design:stencilid>
+      <design:creationdate>2026-08-25T16:17:52.086Z</design:creationdate>
+      <design:modificationdate>2026-08-25T16:17:52.086Z</design:modificationdate>
+    </extensionElements>
+    <laneSet id="laneSet_process-Pool_1">
+      <lane id="Lane_2" name="Voluntario Mapuescuela">
+        <flowNodeRef>SequenceFlow_23</flowNodeRef>
+        <flowNodeRef>SequenceFlow_11</flowNodeRef>
+        <flowNodeRef>SequenceFlow_41</flowNodeRef>
+        <flowNodeRef>SequenceFlow_44</flowNodeRef>
+        <flowNodeRef>SequenceFlow_27</flowNodeRef>
+        <flowNodeRef>SequenceFlow_43</flowNodeRef>
+        <flowNodeRef>SequenceFlow_18</flowNodeRef>
+        <flowNodeRef>SequenceFlow_19</flowNodeRef>
+        <flowNodeRef>SequenceFlow_31</flowNodeRef>
+        <flowNodeRef>SequenceFlow_33</flowNodeRef>
+        <flowNodeRef>SequenceFlow_42</flowNodeRef>
+        <flowNodeRef>si</flowNodeRef>
+        <flowNodeRef>SequenceFlow_26</flowNodeRef>
+        <flowNodeRef>SequenceFlow_29</flowNodeRef>
+        <flowNodeRef>SequenceFlow_37</flowNodeRef>
+        <flowNodeRef>SequenceFlow_38</flowNodeRef>
+        <flowNodeRef>SequenceFlow_14</flowNodeRef>
+        <flowNodeRef>FormTask_15</flowNodeRef>
+        <flowNodeRef>FormTask_7</flowNodeRef>
+        <flowNodeRef>FormTask_39</flowNodeRef>
+        <flowNodeRef>FormTask_36</flowNodeRef>
+        <flowNodeRef>FormTask_24</flowNodeRef>
+        <flowNodeRef>FormTask_32</flowNodeRef>
+        <flowNodeRef>FormTask_9</flowNodeRef>
+        <flowNodeRef>FormTask_12</flowNodeRef>
+        <flowNodeRef>FormTask_28</flowNodeRef>
+        <flowNodeRef>FormTask_30</flowNodeRef>
+        <flowNodeRef>FormTask_35</flowNodeRef>
+        <flowNodeRef>Disponible</flowNodeRef>
+        <flowNodeRef>Exclusive_Databased_Gateway_22</flowNodeRef>
+        <flowNodeRef>Exclusive_Databased_Gateway_34</flowNodeRef>
+        <flowNodeRef>EndNoneEvent_10</flowNodeRef>
+        <flowNodeRef>EndNoneEvent_25</flowNodeRef>
+        <flowNodeRef>EndNoneEvent_40</flowNodeRef>
+        <flowNodeRef>EndNoneEvent_43</flowNodeRef>
+      </lane>
+    </laneSet>
+    <userTask id="FormTask_15" name="Revision de cuenta bancaria validando el comprobante enviado" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="FormTask_7" name="Revisar disponibilidad del producto solicitado " flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="FormTask_39" name="Enviar numero de seguimiento a cliente de su producto" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="FormTask_36" name="Coordinar entrega en algun punto en Padre hurtado" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="FormTask_24" name="Notificar al cliente de problema en el pago" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="FormTask_32" name="Coordinacion de modalidad de entrega de los productos " flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="FormTask_9" name="Informar falta de stock a cliente" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="FormTask_12" name="Enviar datos de cuenta bancaria por DM" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="FormTask_28" name="Registro de venta manualmente" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="FormTask_30" name="Actualizar stock manualmente" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="FormTask_35" name="Preparar pedido para gestionar el envio " flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <exclusiveGateway id="Disponible" name="¿Producto disponible?">
+      <extensionElements>
+        <design:stencilid>Exclusive_Databased_Gateway</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="Exclusive_Databased_Gateway_22" name="¿Pago recibido correctamente?">
+      <extensionElements>
+        <design:stencilid>Exclusive_Databased_Gateway</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="Exclusive_Databased_Gateway_34" name="¿Modalida de entrega?">
+      <extensionElements>
+        <design:stencilid>Exclusive_Databased_Gateway</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </exclusiveGateway>
+    <endEvent id="EndNoneEvent_10" name="venta no concretada">
+      <extensionElements>
+        <design:stencilid>EndNoneEvent</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </endEvent>
+    <endEvent id="EndNoneEvent_25" name="venta cancelada">
+      <extensionElements>
+        <design:stencilid>EndNoneEvent</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </endEvent>
+    <endEvent id="EndNoneEvent_40" name="Venta concretada">
+      <extensionElements>
+        <design:stencilid>EndNoneEvent</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </endEvent>
+    <endEvent id="EndNoneEvent_43" name="Venta concretada con retiro">
+      <extensionElements>
+        <design:stencilid>EndNoneEvent</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </endEvent>
+    <sequenceFlow id="SequenceFlow_23" sourceRef="FormTask_15" targetRef="Exclusive_Databased_Gateway_22">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_11" sourceRef="FormTask_7" targetRef="Disponible">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_42" sourceRef="FormTask_35" targetRef="FormTask_39">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_41" sourceRef="FormTask_39" targetRef="EndNoneEvent_40">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_38" name="Retiro" sourceRef="Exclusive_Databased_Gateway_34" targetRef="FormTask_36">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_44" sourceRef="FormTask_36" targetRef="EndNoneEvent_43">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_26" name="NO" sourceRef="Exclusive_Databased_Gateway_22" targetRef="FormTask_24">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_27" sourceRef="FormTask_24" targetRef="EndNoneEvent_25">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_33" sourceRef="FormTask_30" targetRef="FormTask_32">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_43" sourceRef="FormTask_32" targetRef="Exclusive_Databased_Gateway_34">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_14" name="NO" sourceRef="Disponible" targetRef="FormTask_9">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_18" sourceRef="FormTask_9" targetRef="EndNoneEvent_10">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="si" name="SI" sourceRef="Disponible" targetRef="FormTask_12">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_29" name="SI" sourceRef="Exclusive_Databased_Gateway_22" targetRef="FormTask_28">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_31" sourceRef="FormTask_28" targetRef="FormTask_30">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_37" name="Despacho" sourceRef="Exclusive_Databased_Gateway_34" targetRef="FormTask_35">
+      <extensionElements>
+        <design:stencilid>SequenceFlow</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+    </sequenceFlow>
+  </process>
+  <process id="Process_04d43dx">
+    <userTask id="FormTask_6" name="Consultar disponibilidad y precio por DM" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+      <incoming>Flow_1kze2yu</incoming>
+    </userTask>
+    <userTask id="FormTask_13" name="Realizar transferencia bancaria " flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+      <outgoing>Flow_13ko023</outgoing>
+    </userTask>
+    <userTask id="FormTask_14" name="Envio de comprobante de transferencia por whatsapp" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+      <incoming>Flow_13ko023</incoming>
+    </userTask>
+    <startEvent id="StartNoneEvent_4" name="Interes en adquirir un producto" flowable:initiator="initiator" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:work-form-field-validation>false</flowable:work-form-field-validation>
+        <design:stencilid>StartNoneEvent</design:stencilid>
+        <design:display_ref_in_diagram>true</design:display_ref_in_diagram>
+      </extensionElements>
+      <outgoing>Flow_0cwu87n</outgoing>
+    </startEvent>
+    <userTask id="FormTask_5" name="Consultar listado en instagram" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type>all</flowable:task-candidates-type>
+        <design:stencilid>FormTask</design:stencilid>
+        <design:stencilsuperid>Task</design:stencilsuperid>
+      </extensionElements>
+      <incoming>Flow_0cwu87n</incoming>
+      <outgoing>Flow_1kze2yu</outgoing>
+    </userTask>
+    <sequenceFlow id="Flow_1kze2yu" sourceRef="FormTask_5" targetRef="FormTask_6" />
+    <sequenceFlow id="Flow_13ko023" sourceRef="FormTask_13" targetRef="FormTask_14" />
+    <sequenceFlow id="Flow_0cwu87n" sourceRef="StartNoneEvent_4" targetRef="FormTask_5" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Collaboration">
+    <bpmndi:BPMNPlane id="BPMNPlane_Collaboration" bpmnElement="Collaboration">
+      <bpmndi:BPMNShape id="BPMNShape_Pool_1" bpmnElement="Pool_1" isHorizontal="true">
+        <omgdc:Bounds x="160" y="490" width="1415" height="776" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Lane_2" bpmnElement="Lane_2" isHorizontal="true">
+        <omgdc:Bounds x="190" y="490" width="1385" height="776" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_15" bpmnElement="FormTask_15">
+        <omgdc:Bounds x="1005" y="633" width="103" height="117" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_7" bpmnElement="FormTask_7">
+        <omgdc:Bounds x="575" y="634" width="102" height="114" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_39" bpmnElement="FormTask_39">
+        <omgdc:Bounds x="682" y="1110" width="105" height="107" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_36" bpmnElement="FormTask_36">
+        <omgdc:Bounds x="993" y="1124" width="126" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_24" bpmnElement="FormTask_24">
+        <omgdc:Bounds x="1344" y="642" width="100" height="99" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_32" bpmnElement="FormTask_32">
+        <omgdc:Bounds x="880" y="864" width="100" height="93" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_9" bpmnElement="FormTask_9">
+        <omgdc:Bounds x="849" y="750" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_12" bpmnElement="FormTask_12">
+        <omgdc:Bounds x="849" y="633" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_28" bpmnElement="FormTask_28">
+        <omgdc:Bounds x="1172" y="877" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_30" bpmnElement="FormTask_30">
+        <omgdc:Bounds x="1036" y="877" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_35" bpmnElement="FormTask_35">
+        <omgdc:Bounds x="808" y="1124" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Disponible" bpmnElement="Disponible" isMarkerVisible="true">
+        <omgdc:Bounds x="729" y="671" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="699" y="709" width="110" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Exclusive_Databased_Gateway_22" bpmnElement="Exclusive_Databased_Gateway_22" isMarkerVisible="true">
+        <omgdc:Bounds x="1202" y="671" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1149" y="719" width="154" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Exclusive_Databased_Gateway_34" bpmnElement="Exclusive_Databased_Gateway_34" isMarkerVisible="true">
+        <omgdc:Bounds x="910" y="1002" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="870" y="1058" width="114" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndNoneEvent_10" bpmnElement="EndNoneEvent_10">
+        <omgdc:Bounds x="1072" y="776" width="28" height="28" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1036" y="807" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndNoneEvent_25" bpmnElement="EndNoneEvent_25">
+        <omgdc:Bounds x="1493" y="677" width="28" height="28" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1466" y="655" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndNoneEvent_40" bpmnElement="EndNoneEvent_40">
+        <omgdc:Bounds x="588" y="1150" width="28" height="28" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="554" y="1186" width="86" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndNoneEvent_43" bpmnElement="EndNoneEvent_43">
+        <omgdc:Bounds x="1239" y="1150" width="28" height="28" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1186" y="1181" width="135" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_23" bpmnElement="SequenceFlow_23" flowable:sourceDockerX="52.0" flowable:sourceDockerY="59.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1107" y="691" />
+        <omgdi:waypoint x="1201" y="691" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_11" bpmnElement="SequenceFlow_11" flowable:sourceDockerX="51.0" flowable:sourceDockerY="57.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="676" y="691" />
+        <omgdi:waypoint x="729" y="691" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_42" bpmnElement="SequenceFlow_42" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="53.0" flowable:targetDockerY="54.0">
+        <omgdi:waypoint x="808" y="1163" />
+        <omgdi:waypoint x="786" y="1163" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_41" bpmnElement="SequenceFlow_41" flowable:sourceDockerX="53.0" flowable:sourceDockerY="54.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="681" y="1163" />
+        <omgdi:waypoint x="616" y="1163" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_38" bpmnElement="SequenceFlow_38" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="63.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="950" y="1021" />
+        <omgdi:waypoint x="1056" y="1021" />
+        <omgdi:waypoint x="1056" y="1123" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="960" y="1003" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_44" bpmnElement="SequenceFlow_44" flowable:sourceDockerX="63.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1119" y="1163" />
+        <omgdi:waypoint x="1239" y="1163" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_26" bpmnElement="SequenceFlow_26" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="50.0">
+        <omgdi:waypoint x="1241" y="691" />
+        <omgdi:waypoint x="1343" y="691" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1252" y="661" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_27" bpmnElement="SequenceFlow_27" flowable:sourceDockerX="50.0" flowable:sourceDockerY="50.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1443" y="691" />
+        <omgdi:waypoint x="1492" y="691" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_33" bpmnElement="SequenceFlow_33" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="47.0">
+        <omgdi:waypoint x="1036" y="916" />
+        <omgdi:waypoint x="1008" y="916" />
+        <omgdi:waypoint x="1008" y="910" />
+        <omgdi:waypoint x="980" y="910" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_43" bpmnElement="SequenceFlow_43" flowable:sourceDockerX="50.0" flowable:sourceDockerY="47.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="930" y="956" />
+        <omgdi:waypoint x="930" y="1001" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_14" bpmnElement="SequenceFlow_14" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="749" y="711" />
+        <omgdi:waypoint x="749" y="789" />
+        <omgdi:waypoint x="849" y="789" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="742" y="803" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_18" bpmnElement="SequenceFlow_18" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="949" y="789" />
+        <omgdi:waypoint x="1072" y="789" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_si" bpmnElement="si" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="749" y="671" />
+        <omgdi:waypoint x="749" y="650" />
+        <omgdi:waypoint x="849" y="652" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="741" y="631" width="11" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_29" bpmnElement="SequenceFlow_29" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1221" y="711" />
+        <omgdi:waypoint x="1221" y="876" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1225" y="820" width="11" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_31" bpmnElement="SequenceFlow_31" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1171" y="916" />
+        <omgdi:waypoint x="1136" y="916" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_37" bpmnElement="SequenceFlow_37" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="910" y="1021" />
+        <omgdi:waypoint x="858" y="1021" />
+        <omgdi:waypoint x="858" y="1123" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="837" y="1003" width="50" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_0w4iysz_di" bpmnElement="Participant_0w4iysz" isHorizontal="true">
+        <omgdc:Bounds x="230" y="80" width="1260" height="340" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_6" bpmnElement="FormTask_6">
+        <omgdc:Bounds x="593" y="105" width="105" height="110" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_13" bpmnElement="FormTask_13">
+        <omgdc:Bounds x="830" y="100" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_14" bpmnElement="FormTask_14">
+        <omgdc:Bounds x="1020" y="99" width="100" height="101" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_StartNoneEvent_4" bpmnElement="StartNoneEvent_4">
+        <omgdc:Bounds x="325" y="135" width="30" height="30" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="265" y="113" width="150" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_FormTask_5" bpmnElement="FormTask_5">
+        <omgdc:Bounds x="450" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1kze2yu_di" bpmnElement="Flow_1kze2yu">
+        <omgdi:waypoint x="550" y="150" />
+        <omgdi:waypoint x="593" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13ko023_di" bpmnElement="Flow_13ko023">
+        <omgdi:waypoint x="930" y="140" />
+        <omgdi:waypoint x="1020" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cwu87n_di" bpmnElement="Flow_0cwu87n">
+        <omgdi:waypoint x="355" y="150" />
+        <omgdi:waypoint x="450" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04lpkz9_di" bpmnElement="Flow_04lpkz9">
+        <omgdi:waypoint x="645" y="215" />
+        <omgdi:waypoint x="645" y="634" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1se45li_di" bpmnElement="Flow_1se45li">
+        <omgdi:waypoint x="899" y="633" />
+        <omgdi:waypoint x="899" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kvlgx6_di" bpmnElement="Flow_0kvlgx6">
+        <omgdi:waypoint x="1070" y="200" />
+        <omgdi:waypoint x="1070" y="633" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
