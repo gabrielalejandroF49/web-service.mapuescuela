@@ -128,3 +128,33 @@ Desde la carpeta donde se encuentra el frontend ejecutar:
 ```bash
 python -m http.server 8000
 
+Cambios recientes
+
+Se agregó soporte de persistencia con Spring Data JPA.
+
+Modelos convertidos en entidades:
+
+Producto
+
+Cliente
+
+Pedido
+
+Comprobante
+
+DetallePedido
+
+Configuración lista para trabajar con SQL Server mediante el driver mssql-jdbc.
+
+Relaciones entre entidades definidas con anotaciones JPA (@ManyToOne, @ManyToMany, @Enumerated).
+
+Configuración de base de datos
+En application.properties se debe definir la conexión a SQL Server:
+
+spring.datasource.url=jdbc:sqlserver://<host>:1433;databaseName=<nombreDB>
+spring.datasource.username=<usuario>
+spring.datasource.password=<contraseña>
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.database-platform=org.hibernate.dialect.SQLServerDialect
+
+
