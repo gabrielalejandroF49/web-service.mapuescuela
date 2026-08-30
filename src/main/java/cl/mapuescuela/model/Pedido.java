@@ -1,13 +1,33 @@
 package cl.mapuescuela.model;
 
+import jakarta.persistence.*;
 import java.util.List;
 
+@Entity
 public class Pedido {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id") // FK hacia Cliente
     private Cliente cliente;
+
+    @ManyToMany
+    @JoinTable(
+            name = "pedido_producto",
+            joinColumns = @JoinColumn(name = "pedido_id"),
+            inverseJoinColumns = @JoinColumn(name = "producto_id")
+    )
     private List<Producto> productos;
+
+    @Enumerated(EnumType.STRING)
     private EstadoPedido estado;
+
+    @Enumerated(EnumType.STRING)
     private ModalidadEntrega modalidadEntrega;
+
     private String direccionEntrega;
 
     // Constructor vacío (necesario para JPA y pruebas)

@@ -1,6 +1,13 @@
 package cl.mapuescuela.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class DetallePedido {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;   // clave primaria autogenerada
 
     private Integer productoId;
     private Integer cantidad;
@@ -14,27 +21,16 @@ public class DetallePedido {
         this.precioUnitario = precioUnitario;
     }
 
-    public Integer getProductoId() {
-        return productoId;
-    }
+    // Getters y Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setProductoId(Integer productoId) {
-        this.productoId = productoId;
-    }
+    public Integer getProductoId() { return productoId; }
+    public void setProductoId(Integer productoId) { this.productoId = productoId; }
 
-    public Integer getCantidad() {
-        return cantidad;
-    }
+    public Integer getCantidad() { return cantidad; }
+    public void setCantidad(Integer cantidad) { this.cantidad = cantidad; }
 
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public Double getPrecioUnitario() {
-        return precioUnitario;
-    }
-
-    public void setPrecioUnitario(Double precioUnitario) {
-        this.precioUnitario = precioUnitario;
-    }
+    public Double getPrecioUnitario() { return precioUnitario; }
+    public void setPrecioUnitario(Double precioUnitario) { this.precioUnitario = precioUnitario; }
 }

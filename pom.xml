@@ -30,17 +30,24 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- Flowable Spring Boot starter (procesos) -->
+        <!-- Spring Boot JPA (necesario para @Entity, @Id, etc.) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- Flowable Spring Boot starter (procesos BPMN) -->
         <dependency>
             <groupId>org.flowable</groupId>
             <artifactId>flowable-spring-boot-starter-process</artifactId>
             <version>6.8.0</version>
         </dependency>
 
-        <!-- Driver SQL Server (runtime) -->
+        <!-- Driver SQL Server (versión estable en Maven Central) -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
+            <version>13.4.0.jre11</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -57,7 +64,7 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-        <!-- API de Jakarta XML Web Services (tu SOAP) -->
+        <!-- API de Jakarta XML Web Services (SOAP) -->
         <dependency>
             <groupId>jakarta.xml.ws</groupId>
             <artifactId>jakarta.xml.ws-api</artifactId>
