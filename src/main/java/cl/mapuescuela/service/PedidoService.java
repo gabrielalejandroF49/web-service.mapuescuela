@@ -5,11 +5,13 @@ import cl.mapuescuela.model.Pedido;
 import cl.mapuescuela.model.Cliente;
 import cl.mapuescuela.model.Producto;
 import cl.mapuescuela.model.ModalidadEntrega;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Service
 public class PedidoService {
 
     // Contador para asignar IDs a los pedidos creados desde Flowable

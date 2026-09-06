@@ -24,26 +24,40 @@
     </properties>
 
     <dependencies>
-        <!-- Spring Boot core -->
+        <!-- Seguridad -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Núcleo Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- Spring Boot JPA (necesario para @Entity, @Id, etc.) -->
+        <!-- Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- Flowable Spring Boot starter (procesos BPMN) -->
+        <!-- Flowable: solo el starter de procesos -->
         <dependency>
             <groupId>org.flowable</groupId>
             <artifactId>flowable-spring-boot-starter-process</artifactId>
             <version>6.8.0</version>
         </dependency>
 
-        <!-- Driver SQL Server (versión estable en Maven Central) -->
+
+
+        <!-- SQL Server -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
@@ -51,34 +65,33 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- H2 para fallback / pruebas locales (opcional) -->
+        <!-- H2 para pruebas -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Jackson para parseo JSON -->
+        <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-        <!-- API de Jakarta XML Web Services (SOAP) -->
+        <!-- SOAP -->
         <dependency>
             <groupId>jakarta.xml.ws</groupId>
             <artifactId>jakarta.xml.ws-api</artifactId>
             <version>4.0.0</version>
         </dependency>
 
-        <!-- Implementación Metro (SOAP runtime) -->
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>jaxws-rt</artifactId>
             <version>4.0.0</version>
         </dependency>
 
-        <!-- JAXB para serialización XML -->
+        <!-- JAXB -->
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
@@ -90,7 +103,7 @@
             <version>4.0.5</version>
         </dependency>
 
-        <!-- JUnit para pruebas unitarias -->
+        <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -101,7 +114,7 @@
 
     <build>
         <plugins>
-            <!-- Plugin de compilación para Java 21 -->
+            <!-- Compilación Java 21 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -111,7 +124,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Spring Boot plugin -->
+            <!-- Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

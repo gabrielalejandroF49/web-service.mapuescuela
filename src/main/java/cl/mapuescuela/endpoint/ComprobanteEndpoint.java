@@ -33,7 +33,7 @@ public class ComprobanteEndpoint {
             throw new RuntimeException("Pedido asociado no encontrado");
         }
 
-        Comprobante comprobante = new Comprobante(comprobanteCounter++, pedidoId, archivo);
+        Comprobante comprobante = new Comprobante(comprobanteCounter++, pedido, archivo);
         comprobantes.add(comprobante);
 
         // Al adjuntar comprobante, el pedido pasa a estado "Pago en revisión"
@@ -49,7 +49,8 @@ public class ComprobanteEndpoint {
             if (c.getId().equals(comprobanteId)) {
                 c.setEstadoValidacion(aprobado ? EstadoValidacion.APROBADO : EstadoValidacion.RECHAZADO);
 
-                Pedido pedido = pedidoService.buscarPedidoEnMemoriaPorId(c.getPedidoId().intValue());
+                // Ahora usamos getPedido().getId() en vez de intValue()
+                Pedido pedido = pedidoService.buscarPedidoEnMemoriaPorId(c.getPedido().getId());
                 if (pedido == null) {
                     throw new RuntimeException("Pedido asociado no encontrado");
                 }
