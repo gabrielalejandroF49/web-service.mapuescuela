@@ -38,7 +38,7 @@ public class CrearPedidoDelegate implements JavaDelegate {
         // Construcción del cliente
         Cliente cliente = new Cliente();
         cliente.setNombre(nombre);
-        cliente.setCorreo(correo);
+        cliente.setEmail(correo);
         cliente.setTelefono(telefono);
 
         // Parseo de detalles desde JSON
@@ -65,11 +65,19 @@ public class CrearPedidoDelegate implements JavaDelegate {
                 List<DetallePedido> detalles = new ArrayList<>();
                 for (Map<String, Object> m : raw) {
                     DetallePedido d = new DetallePedido();
-                    if (m.get("productoId") != null) d.setProductoId(((Number) m.get("productoId")).intValue());
-                    if (m.get("id") != null) d.setProductoId(((Number) m.get("id")).intValue());
+
+                    // Crear producto y asignarlo al detalle
+                    if (m.get("productoId") != null || m.get("id") != null) {
+                        Producto producto = new Producto();
+                        Number idNum = (Number) (m.get("productoId") != null ? m.get("productoId") : m.get("id"));
+                        producto.setId(idNum.longValue());
+                        d.setProducto(producto);
+                    }
+
                     if (m.get("cantidad") != null) d.setCantidad(((Number) m.get("cantidad")).intValue());
                     if (m.get("precioUnitario") != null) d.setPrecioUnitario(((Number) m.get("precioUnitario")).doubleValue());
                     if (m.get("precio") != null) d.setPrecioUnitario(((Number) m.get("precio")).doubleValue());
+
                     detalles.add(d);
                 }
                 return detalles;
@@ -85,8 +93,8 @@ public class CrearPedidoDelegate implements JavaDelegate {
         if (detalles == null) return productos;
         for (DetallePedido d : detalles) {
             Producto p = new Producto();
-            if (d.getProductoId() != null) {
-                p.setId(Long.valueOf(d.getProductoId()));
+            if (d.getProducto() != null && d.getProducto().getId() != null) {
+                p.setId(d.getProducto().getId());
             }
             if (d.getPrecioUnitario() != null) {
                 p.setPrecio(d.getPrecioUnitario());

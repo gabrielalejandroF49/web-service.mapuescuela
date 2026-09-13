@@ -5,6 +5,8 @@ import org.flowable.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
 import cl.mapuescuela.service.PedidoService;
 import cl.mapuescuela.model.Pedido;
+import cl.mapuescuela.model.DetallePedido;
+import cl.mapuescuela.model.Producto;
 
 @Component("actualizarInventarioDelegate")
 public class ActualizarInventarioDelegate implements JavaDelegate {
@@ -25,14 +27,18 @@ public class ActualizarInventarioDelegate implements JavaDelegate {
             Pedido pedido = pedidoService.buscarPedidoEnMemoriaPorId(pedidoId);
 
             if (pedido != null) {
-                // Aquí iría la lógica real de actualización de inventario
-                // Por ahora simulamos con un mensaje en consola
                 System.out.println("✅ Inventario actualizado para el pedido " + pedidoId);
 
-                // Podrías recorrer los productos del pedido y descontar stock
-                pedido.getProductos().forEach(producto -> {
-                    System.out.println(" - Producto: " + producto.getNombre() + " actualizado en inventario.");
-                });
+                // Recorrer los detalles del pedido y actualizar stock
+                for (DetallePedido detalle : pedido.getDetalles()) {
+                    Producto producto = detalle.getProducto();
+                    if (producto != null) {
+                        System.out.println(" - Producto: " + producto.getNombre() +
+                                " | Cantidad: " + detalle.getCantidad());
+                        // Aquí iría la lógica real de descontar stock:
+                        // producto.setStock(producto.getStock() - detalle.getCantidad());
+                    }
+                }
 
             } else {
                 System.out.println("⚠️ Pedido con ID " + pedidoId + " no encontrado en memoria.");

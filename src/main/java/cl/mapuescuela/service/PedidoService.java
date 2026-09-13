@@ -4,6 +4,7 @@ import cl.mapuescuela.model.EstadoPedido;
 import cl.mapuescuela.model.Pedido;
 import cl.mapuescuela.model.Cliente;
 import cl.mapuescuela.model.Producto;
+import cl.mapuescuela.model.DetallePedido;
 import cl.mapuescuela.model.ModalidadEntrega;
 import org.springframework.stereotype.Service;
 
@@ -100,8 +101,18 @@ public class PedidoService {
         // Si la lista de productos viene null, la inicializamos vacía
         List<Producto> listaProductos = productos != null ? productos : new ArrayList<>();
 
+        // Convertir productos en detalles
+        List<DetallePedido> detalles = new ArrayList<>();
+        for (Producto p : listaProductos) {
+            DetallePedido detalle = new DetallePedido();
+            detalle.setProducto(p);
+            detalle.setCantidad(1); // cantidad por defecto
+            detalle.setPrecioUnitario(p.getPrecio()); // si tu Producto tiene precio
+            detalles.add(detalle);
+        }
+
         // Crear el pedido con los datos recibidos
-        Pedido pedido = new Pedido(id, cliente, listaProductos, modalidad, direccionEntrega);
+        Pedido pedido = new Pedido(id, cliente, detalles, modalidad, direccionEntrega);
 
         // Estado inicial siempre PENDIENTE
         pedido.setEstado(EstadoPedido.PENDIENTE);
