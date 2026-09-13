@@ -157,4 +157,44 @@ spring.datasource.password=<contraseña>
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.database-platform=org.hibernate.dialect.SQLServerDialect
 
+---
 
+## 🎨 Mejoras del frontend a partir de la retroalimentación
+
+A partir de la retroalimentación recibida en la Entrega N.° 2 se realizaron mejoras orientadas a acercar la solución a un escenario de uso real por parte de Mapuescuela.
+
+### Identidad visual
+
+Se adaptó la interfaz considerando la identidad institucional de Mapuescuela:
+
+- Incorporación del logotipo institucional.
+- Uso de colores azul, celeste y verde presentes en la imagen de la organización.
+- Incorporación del lema "Educa-acción para el buen vivir".
+- Ajustes visuales en catálogo, navegación y panel administrativo.
+
+### Seguridad y control de acceso
+
+Se separaron las operaciones públicas de las operaciones administrativas.
+
+Los usuarios pueden acceder libremente a:
+
+- Catálogo de productos.
+- Detalle de productos.
+- Carrito.
+- Generación de pedidos.
+- Consulta del estado de un pedido.
+
+Las operaciones que permiten modificar información quedaron restringidas mediante una pantalla de autenticación:
+
+- Modificación de productos.
+- Cambio del estado de pedidos.
+- Gestión administrativa.
+- Restablecimiento de información de prueba.
+
+Se incorporó además cierre de sesión y validación del rol administrativo en las funciones sensibles del frontend.
+
+> La autenticación implementada corresponde al prototipo local. Para un ambiente productivo, la autenticación y autorización deben ser validadas también desde el backend.
+
+### Estado actual
+
+El frontend continúa funcionando localmente y mantiene su estructura preparada para la integración con los servicios del backend.
