@@ -84,3 +84,34 @@ Fotografías utilizadas bajo la licencia de Unsplash.
 Se agregaron comentarios breves en las secciones principales de `app.js`,
 `soap-client.js` y las páginas HTML. El objetivo es explicar las decisiones
 más importantes sin llenar el código de comentarios innecesarios.
+
+
+## Mejoras posteriores a la retroalimentación de la Entrega 2
+
+Se incorporaron mejoras específicas en las interfaces de usuario:
+
+### Identidad visual
+- Se incorporó el logotipo institucional de Mapuescuela en la navegación, portada y acceso del equipo.
+- Se actualizó la paleta visual tomando como referencia el azul, celeste, verde y verde claro presentes en el logotipo.
+- Se reforzó el lema institucional **“Educa-acción para el buen vivir”**.
+
+### Control de acceso
+- Las operaciones públicas, como consultar productos, generar un pedido y revisar su estado, continúan disponibles para el usuario.
+- El panel que permite modificar productos o cambiar estados de pedidos ahora exige inicio de sesión.
+- Las funciones sensibles validan que exista una sesión con rol `ADMIN` antes de ejecutarse.
+- Se incorporó cierre de sesión.
+
+### Credenciales de demostración local
+- Usuario: `voluntario`
+- Contraseña: `Mapu2026!`
+
+> Importante: esta autenticación protege la interfaz del prototipo local. En un ambiente productivo, la autenticación y autorización deben validarse también del lado del backend. Nunca debe confiarse únicamente en controles implementados en JavaScript del navegador.
+
+### Ejecución local
+```bash
+python -m http.server 8000
+```
+
+Luego abrir:
+`http://localhost:8000`
+

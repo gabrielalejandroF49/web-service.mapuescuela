@@ -9,13 +9,14 @@
 <body data-page="admin">
   <header class="topbar">
     <a class="brand" href="index.html">
-      <span class="brand-mark">M</span>
-      <span><strong>Mapuescuela</strong><small>Panel de voluntariado</small></span>
+      <img class="brand-logo" src="logo-mapuescuela.jpg" alt="Logotipo Mapuescuela">
+      <span><strong>Mapuescuela</strong><small>Panel protegido de voluntariado</small></span>
     </a>
     <nav class="nav">
       <a href="index.html">Catálogo</a>
       <a href="estado.html">Mi pedido</a>
       <a class="active" href="admin.html">Administración</a>
+      <button id="logout-btn" class="nav-logout" type="button">Cerrar sesión</button>
       <a class="cart-link" href="carrito.html">Carrito <span id="cart-count">0</span></a>
     </nav>
   </header>
@@ -24,8 +25,9 @@
   <main class="section">
     <div class="section-head">
       <div>
-        <span class="eyebrow">Voluntario / administrador</span>
+        <span class="eyebrow">Área protegida · Voluntariado</span>
         <h1>Gestión de ventas</h1>
+        <p class="admin-security-copy">Solo usuarios autenticados pueden modificar productos o estados de pedidos.</p>
       </div>
       <button id="reset-demo" class="btn ghost">Restablecer demo</button>
     </div>

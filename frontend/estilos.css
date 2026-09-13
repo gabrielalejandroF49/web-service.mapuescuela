@@ -1,18 +1,19 @@
 :root{
-  --bg:#f5f7f4;
+  --brand:#1f5fae;
+  --brand-dark:#173a5e;
+  --brand-cyan:#2ca9b6;
+  --brand-green:#4f8f6f;
+  --brand-lime:#b6d879;
   --surface:#ffffff;
-  --surface-2:#eef4ed;
-  --text:#18231b;
-  --muted:#66746a;
-  --brand:#29613a;
-  --brand-dark:#183f27;
-  --accent:#d8a83d;
-  --border:#dce5dc;
+  --surface-2:#eef7f8;
+  --text:#17304a;
+  --muted:#617284;
+  --border:#d5e3e8;
   --danger:#a63c3c;
-  --warning:#9a6b17;
-  --success:#2a6c43;
-  --shadow:0 16px 40px rgba(28,55,35,.10);
+  --success:#397a5a;
+  --warning:#9a6b12;
   --radius:18px;
+  --shadow:0 14px 38px rgba(23,58,94,.10);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -29,7 +30,7 @@ button{cursor:pointer}
 .nav a{padding:9px 12px;border-radius:10px;color:var(--muted);font-weight:700;font-size:14px}
 .nav a:hover,.nav a.active{background:var(--surface-2);color:var(--brand-dark)}
 .cart-link span{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;background:var(--brand);color:#fff;border-radius:999px;font-size:12px}
-.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:36px;align-items:center;padding:76px clamp(18px,7vw,110px);background:linear-gradient(135deg,#e9f2e7,#f8f3e2)}
+.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:36px;align-items:center;padding:76px clamp(18px,7vw,110px);background:linear-gradient(135deg,#e8f6f7,#f4f9ff 58%,#eef6dc)}
 .hero h1{max-width:780px;margin:10px 0 14px;font-size:clamp(38px,6vw,74px);line-height:1.02;letter-spacing:-.045em}
 .hero p{max-width:650px;color:var(--muted);font-size:18px}
 .eyebrow{color:var(--brand);font-weight:900;text-transform:uppercase;letter-spacing:.12em;font-size:12px}
@@ -42,7 +43,7 @@ button{cursor:pointer}
 .section-head h1,.section-head h2{margin:4px 0 0;line-height:1.1}
 .filters{display:flex;gap:10px;flex-wrap:wrap}
 input,select,textarea{width:100%;border:1px solid var(--border);background:#fff;border-radius:12px;padding:12px 14px;color:var(--text);outline:none}
-input:focus,select:focus,textarea:focus{border-color:#7aad87;box-shadow:0 0 0 3px rgba(41,97,58,.1)}
+input:focus,select:focus,textarea:focus{border-color:var(--brand-cyan);box-shadow:0 0 0 3px rgba(44,169,182,.13)}
 .filters input{width:min(320px,70vw)}
 .filters select{width:auto}
 .product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
@@ -59,7 +60,7 @@ input:focus,select:focus,textarea:focus{border-color:#7aad87;box-shadow:0 0 0 3p
 .btn{border:0;border-radius:11px;padding:11px 15px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px}
 .btn.primary{background:var(--brand);color:white}
 .btn.primary:hover{background:var(--brand-dark)}
-.btn.ghost{background:#edf2ed;color:var(--brand-dark)}
+.btn.ghost{background:#edf5f7;color:var(--brand-dark)}
 .btn.danger-btn{background:#f7e5e5;color:var(--danger)}
 .btn.block{width:100%;margin-top:10px}
 .btn.tiny{padding:7px 10px;font-size:12px;margin:2px}
@@ -113,7 +114,7 @@ input:focus,select:focus,textarea:focus{border-color:#7aad87;box-shadow:0 0 0 3p
 .stat span{color:var(--muted);font-size:13px}
 .stat strong{font-size:30px;margin-top:4px}
 .admin-tabs{display:flex;gap:8px;margin-bottom:14px}
-.tab{border:0;background:#e8eee8;padding:10px 16px;border-radius:10px;font-weight:800;color:var(--muted)}
+.tab{border:0;background:#e8f3f5;padding:10px 16px;border-radius:10px;font-weight:800;color:var(--muted)}
 .tab.active{background:var(--brand);color:#fff}
 .admin-panel{background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px}
 .table-wrap{overflow:auto}
@@ -129,7 +130,7 @@ td small{color:var(--muted)}
 .modal-close{position:absolute;right:16px;top:12px;border:0;background:transparent;font-size:28px;color:var(--muted)}
 .detail-visual{display:grid;place-items:center;height:200px;background:linear-gradient(145deg,#e4efe1,#fbf6e7);border-radius:16px;font-size:90px;margin-bottom:20px}
 .empty{text-align:center;padding:50px 20px;color:var(--muted);background:#fff;border:1px dashed var(--border);border-radius:16px}
-.toast{position:fixed;left:50%;bottom:24px;z-index:100;transform:translate(-50%,20px);opacity:0;background:#173d25;color:white;padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);transition:.2s}
+.toast{position:fixed;left:50%;bottom:24px;z-index:100;transform:translate(-50%,20px);opacity:0;background:var(--brand-dark);color:white;padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);transition:.2s}
 .toast.show{transform:translate(-50%,0);opacity:1}
 .hidden{display:none!important}
 footer{padding:30px;text-align:center;color:var(--muted);font-size:13px}
@@ -208,4 +209,164 @@ footer{padding:30px;text-align:center;color:var(--muted);font-size:13px}
   object-fit:cover;
   border-radius:9px;
   border:1px solid var(--border);
+}
+
+
+/* ===== Identidad visual institucional Mapuescuela ===== */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand-logo{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#fff;
+  border:2px solid rgba(31,95,174,.15);
+  box-shadow:0 5px 15px rgba(23,58,94,.10);
+}
+.brand span{
+  display:grid;
+  gap:1px;
+}
+.brand strong{color:var(--brand-dark);font-size:18px}
+.brand small{color:var(--brand);font-weight:700}
+
+.topbar{
+  border-bottom:3px solid var(--brand-cyan);
+}
+.eyebrow{color:var(--brand)}
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  right:-70px;
+  bottom:-95px;
+  border-radius:50%;
+  background:rgba(182,216,121,.24);
+  pointer-events:none;
+}
+.identity-card{
+  text-align:center;
+  border-top:5px solid var(--brand-cyan);
+}
+.hero-logo{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:50%;
+  display:block;
+  margin:0 auto 16px;
+  box-shadow:0 10px 30px rgba(23,58,94,.12);
+}
+.btn.primary{
+  background:linear-gradient(135deg,var(--brand),#2876c6);
+}
+.btn.primary:hover{background:var(--brand-dark)}
+.badge{
+  background:#e7f6f7;
+  color:var(--brand-dark);
+}
+.product-card{
+  border-top:4px solid transparent;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.product-card:hover{
+  transform:translateY(-3px);
+  border-top-color:var(--brand-cyan);
+  box-shadow:0 16px 34px rgba(23,58,94,.12);
+}
+footer{
+  border-top:1px solid var(--border);
+  background:#f8fbfc;
+}
+
+/* ===== Acceso y autorización del panel administrativo ===== */
+.auth-shell{
+  min-height:calc(100vh - 150px);
+  display:grid;
+  place-items:center;
+  padding:48px 20px;
+  background:linear-gradient(145deg,#e9f7f8,#f6fbff 60%,#f0f7df);
+}
+.auth-card{
+  width:min(520px,100%);
+  background:#fff;
+  border:1px solid var(--border);
+  border-top:6px solid var(--brand);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:32px;
+}
+.auth-card h1{margin:8px 0}
+.auth-card>p{color:var(--muted);margin-bottom:22px}
+.auth-logo{
+  width:108px;
+  height:108px;
+  object-fit:cover;
+  border-radius:50%;
+  display:block;
+  margin:0 auto 20px;
+  box-shadow:0 10px 28px rgba(23,58,94,.12);
+}
+.auth-form{
+  display:grid;
+  gap:14px;
+}
+.auth-form label{font-weight:800;font-size:14px}
+.auth-form input{margin-top:6px}
+.auth-error{
+  margin-top:14px;
+  background:#f8e1e1;
+  color:var(--danger);
+  border:1px solid #edbbbb;
+  border-radius:12px;
+  padding:12px 14px;
+  font-weight:700;
+}
+.security-note{
+  margin-top:22px;
+  padding:14px;
+  border-radius:14px;
+  background:#f0f8fa;
+  border:1px solid #cfe7eb;
+  color:var(--muted);
+  font-size:13px;
+}
+.security-note strong{color:var(--brand-dark)}
+.security-note p{margin:5px 0 0}
+.nav-logout{
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--brand-dark);
+  padding:9px 12px;
+  border-radius:10px;
+  font-weight:800;
+}
+.nav-logout:hover{background:#edf5f7}
+.admin-security-copy{
+  color:var(--muted);
+  margin:6px 0 0;
+  max-width:660px;
+}
+
+/* Destaca visualmente que administración es un entorno restringido */
+body[data-page="admin"] .topbar{
+  background:linear-gradient(90deg,#fff,#f0f8fa);
+}
+body[data-page="admin"] .admin-panel{
+  border-top:4px solid var(--brand-cyan);
+}
+
+@media(max-width:620px){
+  .brand-logo{width:48px;height:48px}
+  .hero-logo{width:95px;height:95px}
+  .auth-card{padding:24px 18px}
 }

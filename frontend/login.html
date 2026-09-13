@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapuescuela | Acceso equipo</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body data-page="login">
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="logo-mapuescuela.jpg" alt="Logotipo Mapuescuela">
+      <span><strong>Mapuescuela</strong><small>Educa-acción para el buen vivir</small></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Catálogo</a>
+      <a href="estado.html">Mi pedido</a>
+      <a class="active" href="login.html">Acceso equipo</a>
+      <a class="cart-link" href="carrito.html">Carrito <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main class="auth-shell">
+    <section class="auth-card">
+      <img class="auth-logo" src="logo-mapuescuela.jpg" alt="Mapuescuela">
+      <span class="eyebrow">Área protegida</span>
+      <h1>Acceso del equipo</h1>
+      <p>Las funciones que modifican productos o estados de pedidos requieren autenticación.</p>
+
+      <form id="login-form" class="auth-form">
+        <label>Usuario
+          <input name="usuario" autocomplete="username" required placeholder="voluntario">
+        </label>
+        <label>Contraseña
+          <input name="password" type="password" autocomplete="current-password" required placeholder="••••••••">
+        </label>
+        <button class="btn primary block" type="submit">Ingresar</button>
+      </form>
+
+      <div id="login-error" class="auth-error hidden" role="alert"></div>
+
+      <div class="security-note">
+        <strong>Protección de operaciones</strong>
+        <p>Este acceso restringe el panel administrativo en el prototipo. En un ambiente productivo, la autenticación y autorización también deben validarse obligatoriamente en el backend.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>Mapuescuela · Educa-acción para el buen vivir</p></footer>
+
+  <script src="soap-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

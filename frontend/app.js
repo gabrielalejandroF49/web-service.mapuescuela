@@ -7,7 +7,17 @@
 const STORAGE = {
   products: "mapuescuela_products_v3",
   cart: "mapuescuela_cart",
-  orders: "mapuescuela_orders"
+  orders: "mapuescuela_orders",
+  auth: "mapuescuela_admin_session"
+};
+
+// Credenciales de demostración para el prototipo local.
+// Usuario: voluntario | Contraseña: Mapu2026!
+// IMPORTANTE: la seguridad real debe implementarse y validarse también en el backend.
+const DEMO_ADMIN = {
+  usuario: "voluntario",
+  passwordHash: "ee8f9e58e321ba89afba3e6743a61026f20ef5890ec6b9f5ede3a7e33dc3a143",
+  rol: "ADMIN"
 };
 
 const DEFAULT_PRODUCTS = [
@@ -78,6 +88,71 @@ function getJSON(key, fallback) {
   catch { return fallback; }
 }
 function setJSON(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
+
+async function sha256(text) {
+  const data = new TextEncoder().encode(text);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+// La sesión se guarda solo durante la pestaña actual para reducir exposición.
+function adminSession() {
+  try { return JSON.parse(sessionStorage.getItem(STORAGE.auth)); }
+  catch { return null; }
+}
+
+function isAdminAuthenticated() {
+  const s = adminSession();
+  return Boolean(s && s.usuario === DEMO_ADMIN.usuario && s.rol === "ADMIN");
+}
+
+function requireAdmin() {
+  if (!isAdminAuthenticated()) {
+    location.href = "login.html?next=admin.html";
+    return false;
+  }
+  return true;
+}
+
+function logoutAdmin() {
+  sessionStorage.removeItem(STORAGE.auth);
+  location.href = "login.html";
+}
+
+// Login de demostración para proteger la interfaz administrativa.
+// En producción, estas credenciales deben validarse en el backend y las operaciones
+// sensibles deben exigir autorización del lado servidor.
+function renderLogin() {
+  const form = document.getElementById("login-form");
+  if (!form) return;
+
+  if (isAdminAuthenticated()) {
+    location.href = "admin.html";
+    return;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const usuario = String(data.get("usuario") || "").trim();
+    const passwordHash = await sha256(String(data.get("password") || ""));
+    const error = document.getElementById("login-error");
+
+    if (usuario === DEMO_ADMIN.usuario && passwordHash === DEMO_ADMIN.passwordHash) {
+      sessionStorage.setItem(STORAGE.auth, JSON.stringify({
+        usuario,
+        rol: DEMO_ADMIN.rol,
+        inicio: new Date().toISOString()
+      }));
+      const next = new URLSearchParams(location.search).get("next") || "admin.html";
+      location.href = next;
+      return;
+    }
+
+    error.textContent = "Usuario o contraseña incorrectos.";
+    error.classList.remove("hidden");
+  });
+}
 
 // Inicializa datos de demostración para que el frontend pueda probarse
 // aunque el backend todavía no esté conectado.
@@ -441,8 +516,12 @@ function orderDetailHTML(o) {
 
 // Implementa el panel de administración para revisar pedidos y gestionar productos.
 function renderAdmin() {
+  if (!requireAdmin()) return;
+
   const ordersTable = document.getElementById("orders-table");
   if (!ordersTable) return;
+
+  document.getElementById("logout-btn")?.addEventListener("click", logoutAdmin);
 
   const refresh = () => {
     const ps = products();
@@ -494,6 +573,7 @@ function renderAdmin() {
   document.getElementById("product-form-close").onclick = closeProductForm;
   document.getElementById("product-form").onsubmit = saveProduct;
   document.getElementById("reset-demo").onclick = () => {
+    if (!isAdminAuthenticated()) return toast("Operación no autorizada.");
     if (confirm("¿Restablecer productos, pedidos y carrito de demostración?")) {
       setJSON(STORAGE.products, DEFAULT_PRODUCTS);
       setJSON(STORAGE.orders, []);
@@ -523,6 +603,12 @@ function adminActions(o) {
 // Actualiza el estado del pedido según el avance del proceso de venta.
 // Cuando se aprueba un pago también se descuenta el stock en esta versión local.
 function updateOrderStatus(id, status) {
+  if (!isAdminAuthenticated()) {
+    toast("Debes iniciar sesión para modificar el estado de un pedido.");
+    setTimeout(() => location.href = "login.html?next=admin.html", 700);
+    return;
+  }
+
   const os = orders();
   const order = os.find(o => o.id === id);
   if (!order) return;
@@ -547,6 +633,10 @@ function updateOrderStatus(id, status) {
 }
 
 function openProductForm(id = null) {
+  if (!isAdminAuthenticated()) {
+    location.href = "login.html?next=admin.html";
+    return;
+  }
   const modal = document.getElementById("product-form-modal");
   const form = document.getElementById("product-form");
   form.reset();
@@ -568,6 +658,10 @@ function closeProductForm() { document.getElementById("product-form-modal")?.cla
 // Guarda productos nuevos o modificaciones realizadas desde Administración.
 function saveProduct(e) {
   e.preventDefault();
+  if (!isAdminAuthenticated()) {
+    toast("Operación no autorizada.");
+    return;
+  }
   const f = new FormData(e.target);
   const ps = products();
   const id = Number(f.get("id"));
@@ -598,6 +692,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const page = document.body.dataset.page;
   if (page === "catalogo") renderCatalog();
+  if (page === "login") renderLogin();
   if (page === "carrito") renderCart();
   if (page === "checkout") renderCheckout();
   if (page === "estado") renderTracking();
